@@ -48,29 +48,35 @@ function Tournament_Organiser() {
 
     function get_tournament_details() {
         
-        function onSuccess(data){
-            document.getElementById("tournament_name").value = data.data[0].tournament_name;
-            document.getElementById("tournament_date").value = data.data[0].tournament_date;
-            document.getElementById("location_name").value = data.data[0].location_name;
-            document.getElementById("location_postcode").value = data.data[0].location_postcode;
+        // get tournament details data to display
+        let tournament_details_data = tournament_details.data[0];
+       
+        // check whether tournament details exist and if so display them
+        if ( tournament_details.data.length == 1) {
+            document.getElementById("tournament_name").value = tournament_details_data.tournament_name;
+            document.getElementById("tournament_date").value = tournament_details_data.tournament_date;
+            document.getElementById("location_name").value = tournament_details_data.location_name;
+            document.getElementById("location_postcode").value = tournament_details_data.location_postcode;
         }
-
-        $.ajax(tournament_details_url, { type: "GET", success: onSuccess });
     }
 
     function put_save_tournament_details(tournament_name, tournament_date, location_name, location_postcode) {
         
-        function onSuccess(data){
-            document.getElementById("tournament_name").setAttribute("readonly", true);
-            document.getElementById("tournament_date").setAttribute("readonly", true);
-            document.getElementById("location_name").setAttribute("readonly", true);
-            document.getElementById("location_postcode").setAttribute("readonly", true);
-        }
+        // get tournament details data which will be updated
+        let tournament_details_data = tournament_details.data[0];
 
-        let put_tournament_details_url = tournament_details_url + "1";
-        $.ajax(put_tournament_details_url, { type: "PUT", data: {tournament_name: tournament_name, 
-            tournament_date: tournament_date, location_name: location_name, location_postcode:
-            location_postcode}, success: onSuccess });
+        // set tournament details data to user input values
+        tournament_details.data[0].tournament_name = document.getElementById("tournament_name").value;
+        tournament_details.data[0].tournament_date = document.getElementById("tournament_date").value;
+        tournament_details.data[0].location_name = document.getElementById("location_name").value;
+        tournament_details.data[0].location_postcode = document.getElementById("location_postcode").value;
+
+        // return input elements to a readonly state
+        document.getElementById("tournament_name").setAttribute("readonly", true);
+        document.getElementById("tournament_date").setAttribute("readonly", true);
+        document.getElementById("location_name").setAttribute("readonly", true);
+        document.getElementById("location_postcode").setAttribute("readonly", true);
+        
     }
 
     // functions to interact with controller
@@ -87,10 +93,13 @@ function Tournament_Organiser() {
     }    
 
     this.edit_tournament_details = function() {
+
+        // remove readonly status from input elements to allow user alterations
         document.getElementById("tournament_name").removeAttribute("readonly");
         document.getElementById("tournament_date").removeAttribute("readonly");
         document.getElementById("location_name").removeAttribute("readonly");
         document.getElementById("location_postcode").removeAttribute("readonly");
+    
     }
 
     this.save_tournament_details = function() {

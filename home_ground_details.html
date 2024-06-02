@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tournament Organiser Tournament Details Page</title>
+    <title>Tournament Organiser Home Ground Details Page</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,29 +13,29 @@
 
         <button class="navigation_element"><a href="home.html">back</a></button>
 
-        <h1 id="page_title">Tournament Details</h1>
+        <h1 id="page_title">Home Ground Details</h1>
 
         <div id="page_content">
             <table id="tournament_details_table">
                 <tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" id="tournament_name" placeholder="tournament name" readonly>
+                        <input type="text" id="tournament_name" value="" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="date" id="tournament_date" placeholder="2025-06-01" readonly>
+                        <input type="date" id="tournament_date" value="" readonly>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" id="location_name" placeholder="location name" readonly>
+                        <input type="text" id="location_name" value="" readonly>
                     </td>
                </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" id="location_postcode" placeholder="location postcode" readonly>
+                        <input type="text" id="location_postcode" value="" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -56,9 +56,9 @@
 
     <script src="jquery-3.7.1.min.js"></script>
     <script src="controller.js"></script>
-    <script src="./data/tournament_details.js"></script>
+    <script src="./data/home_ground_details.js"></script>
     <script>window.addEventListener("load", () => {
-        controller.populate_tournament_details();
+        controller.populate_home_ground_details();
     });</script>    
 </body>
 </html>
