@@ -9,7 +9,7 @@ body {
 }
 
 #web_app_title {
-    width: 50%;
+    width: 80%;
     margin: auto;
     text-align: center;
     font-style: italic;
@@ -17,7 +17,7 @@ body {
 }
 
 #page_title {
-    width: 50%;
+    width: 80%;
     margin: auto;
     text-align: center;
     margin-top: 2rem;
@@ -26,7 +26,7 @@ body {
 }
 
 #page_content {
-    width: 50%;
+    width: 75%;
     margin: auto;
 }
 
@@ -43,7 +43,7 @@ input, button{
     filter: drop-shadow(0.25rem 0.25rem rgba(166, 152, 127, 0.46));
 }
 
-.save_button, .edit_button {
+.edit_button, .save_button, .delete_button {
     width: auto;
 }
 
@@ -59,7 +59,7 @@ a {
     text-decoration: none;
 }
 
-#tournament_details_table {
+table {
     width: 10rem;
     margin: auto;
 }

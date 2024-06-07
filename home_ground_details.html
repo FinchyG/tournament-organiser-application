@@ -16,39 +16,7 @@
         <h1 id="page_title">Home Ground Details</h1>
 
         <div id="page_content">
-            <table id="tournament_details_table">
-                <tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" id="tournament_name" value="" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="date" id="tournament_date" value="" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" id="location_name" value="" readonly>
-                    </td>
-               </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" id="location_postcode" value="" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="edit_button" onclick="controller.edit_tournament_details()">edit</button>
-                    </td>
-                    <td>
-                        <button class="save_button" onclick="controller.save_tournament_details()">save</button>
-                    </td>
-                </tr>
-            </table>
-
-
+            
         </div>
     </div>
 
@@ -56,6 +24,7 @@
 
     <script src="jquery-3.7.1.min.js"></script>
     <script src="controller.js"></script>
+    <script src="./DOM_helpers/h_g_d.js"></script>
     <script src="./data/home_ground_details.js"></script>
     <script>window.addEventListener("load", () => {
         controller.populate_home_ground_details();
