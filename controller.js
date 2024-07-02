@@ -6,7 +6,7 @@ var controller;
 
 window.addEventListener("load", () => {
     console.log("page loaded");
-    // Create the Tournament_Organiser object for use by the HTML view
+    // Create the Tournament_Organiser object for use by the HTML View
     controller = new Tournament_Organiser();
 });
 
