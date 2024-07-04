@@ -88,8 +88,12 @@ function Tournament_Organiser() {
         
         // get home ground details data so that it can be displayed
         let home_ground_details_data = home_ground_details.data;
-         
-        console.log(home_ground_details_data);
+        
+        // no need to check for existance of data because there cannot be fewer than one
+        // home ground (shared by participating teams) and dummy data provided on 
+        // application initialisation
+
+        // for loop to display each home ground in its own table
         for (let i = 0; i < home_ground_details_data.length; i++ ) {
             let h_g_d_id = home_ground_details_data[i].id;
             let h_g_d_home_ground_name = home_ground_details_data[i].home_ground_name;

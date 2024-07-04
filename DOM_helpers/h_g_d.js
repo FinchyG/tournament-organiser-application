@@ -13,7 +13,8 @@ function create_home_ground_table(i, home_ground_details_data) {
     // add row for a table header to separate tables
     const new_row0 = new_table.insertRow(0);
     const new_cell0 = new_row0.insertCell(0);
-    new_cell0.innerHTML = "<p>home ground</p>";
+    const cell_header = "<p>home ground " + (i + 1) + "</p>";
+    new_cell0.innerHTML = cell_header;
 
     // add row for home ground name display / input
     const new_row1 = new_table.insertRow(1);
