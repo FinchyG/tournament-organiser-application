@@ -212,6 +212,9 @@ function Tournament_Organiser() {
     }
 
     this.add_home_ground_details = function() {
-        window.scrollTo(0, document.body.scrollHeight);
+
+        // create new data entry table
+        create_home_ground_data_entry_table();
+
     }
 }
