@@ -1,3 +1,15 @@
+function clear_home_ground_details_page() {
+    
+    // create variable to store DOM element and reduce while loop processing
+    let page_content_node = document.getElementById("page_content");
+
+    // loop removing elements from page content until all removed
+    while(page_content_node.firstChild) {
+        page_content_node.removeChild(page_content_node.lastChild);
+    }
+
+}
+
 function create_home_ground_table(i, home_ground_details_data) {
 
     // create variables to ease data insertion in following table creation code

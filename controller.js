@@ -88,7 +88,7 @@ function Tournament_Organiser() {
         
         // get home ground details data so that it can be displayed
         let home_ground_details_data = home_ground_details.data;
-        
+
         // no need to check for existance of data because there cannot be fewer than one
         // home ground (shared by participating teams) and dummy data provided on 
         // application initialisation
@@ -120,6 +120,25 @@ function Tournament_Organiser() {
         document.getElementById("home_ground_postcode" + id_number).setAttribute("readonly", true);
 
         }
+    }
+    
+    function delete_model_home_ground_details(id_number) {
+                
+        // get home ground details data so that it can be deleted
+        let home_ground_details_data = home_ground_details.data;
+        
+        // loop through home ground details data to find record matcheing the one with user alterations
+        for (let i = 0; i < home_ground_details_data.length; i++) {
+            if (i == id_number -1) {
+                console.log("id number found: " + id_number);
+                home_ground_details_data.splice(i, 1);
+                break;
+            }
+        }
+        
+        // display data without deleted item
+        get_home_ground_details();
+        
     }
 
     // functions to interact with controller
@@ -176,5 +195,19 @@ function Tournament_Organiser() {
         // call function to save user input data
         put_save_home_ground_details(id_number, user_input_home_ground_name, user_input_home_ground_postcode);
    
+    }
+    
+    this.delete_home_ground_details = function(clicked_id) {
+
+        // get last character of button id to identify DOM elements related to it
+        let id_number = clicked_id.substr(clicked_id.length - 1);
+
+        // clear any already displayed data so that only current data state is
+        // displayed on completion of delete operation
+        clear_home_ground_details_page();
+
+        // call function to delete selected home ground details from Model
+        delete_model_home_ground_details(id_number);
+
     }
 }
