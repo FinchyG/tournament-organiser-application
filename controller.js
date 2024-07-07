@@ -210,4 +210,8 @@ function Tournament_Organiser() {
         delete_model_home_ground_details(id_number);
 
     }
+
+    this.add_home_ground_details = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
 }
