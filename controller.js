@@ -55,13 +55,13 @@ function Tournament_Organiser() {
         // get tournament details data so that it can be displayed
         let tournament_details_data = tournament_details.data[0];
        
-        // check whether tournament details exist and if so display them
-        if ( tournament_details.data.length == 1) {
-            document.getElementById("tournament_name").value = tournament_details_data.tournament_name;
-            document.getElementById("tournament_date").value = tournament_details_data.tournament_date;
-            document.getElementById("location_name").value = tournament_details_data.location_name;
-            document.getElementById("location_postcode").value = tournament_details_data.location_postcode;
-        }
+        // no need to check whether tournament details exist because if user
+        // has not entered any then defaults will be present
+        document.getElementById("tournament_name").value = tournament_details_data.tournament_name;
+        document.getElementById("tournament_date").value = tournament_details_data.tournament_date;
+        document.getElementById("location_name").value = tournament_details_data.location_name;
+        document.getElementById("location_postcode").value = tournament_details_data.location_postcode;
+        
     }
 
     function put_save_tournament_details(tournament_name, tournament_date, location_name, location_postcode) {
