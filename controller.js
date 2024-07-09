@@ -127,10 +127,12 @@ function Tournament_Organiser() {
         // get home ground details data so that it can be deleted
         let home_ground_details_data = home_ground_details.data;
         
-        // loop through home ground details data to find record matcheing the one with user alterations
+        // loop through home ground details data to find record matcheing the one selected
+        // by user to delete
         for (let i = 0; i < home_ground_details_data.length; i++) {
-            if (i == id_number -1) {
-                console.log("id number found: " + id_number);
+            console.log("loop engaged");
+            if (home_ground_details_data[i].id == id_number) {
+                console.log("id found");
                 home_ground_details_data.splice(i, 1);
                 break;
             }
@@ -202,13 +204,20 @@ function Tournament_Organiser() {
         // get last character of button id to identify DOM elements related to it
         let id_number = clicked_id.substr(clicked_id.length - 1);
 
-        // clear any already displayed data so that only current data state is
-        // displayed on completion of delete operation
-        clear_home_ground_details_page();
+        // check that at least two home grounds are stored so that delete operation can proceed, must
+        // be at least one home ground (even if shared by many teams)
+        if (document.getElementById("page_content").childElementCount > 1) {
+        
+            // clear any already displayed data so that only current data state is
+            // displayed on completion of delete operation
+            clear_home_ground_details_page();
 
-        // call function to delete selected home ground details from Model
-        delete_model_home_ground_details(id_number);
-
+            // call function to delete selected home ground details from Model
+            delete_model_home_ground_details(id_number);
+        
+        } else {
+            alert("cannot delete - must be at least one home ground");
+        }
     }
 
     this.add_home_ground_details = function() {

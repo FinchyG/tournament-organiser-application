@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tournament Organiser Coach Details Page</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    
+    <div id="page_div">
+        <h1 id="web_app_title">Tournament <br> Organiser</h1>
+
+        <a href="home.html"><button class="navigation_element">back</button></a>
+
+        <h1 id="page_title">Coach Details</h1>
+
+        <button onclick="controller.add_coach_details()">add coach</button>
+
+        <div id="page_content">
+                        
+        </div>
+    </div>
+
+
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="./DOM_helpers/c_d.js"></script>
+    <script src="./model/coach_details.js"></script>
+    <script src="controller.js"></script>
+    <script>window.addEventListener("load", () => {
+        controller.populate_coach_details();
+    });</script>    
+</body>
+</html>
