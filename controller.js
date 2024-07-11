@@ -95,11 +95,9 @@ function Tournament_Organiser() {
 
         // for loop to display each home ground in its own table
         for (let i = 0; i < home_ground_details_data.length; i++ ) {
-            let h_g_d_id = home_ground_details_data[i].id;
-            let h_g_d_home_ground_name = home_ground_details_data[i].home_ground_name;
-            let h_g_d_home_ground_postcode = home_ground_details_data[i].home_gruond_postcode;
             
             create_home_ground_table(i, home_ground_details_data);
+
         }
     }
 
@@ -141,6 +139,23 @@ function Tournament_Organiser() {
         // display data without deleted item
         get_home_ground_details();
         
+    }
+
+    // -----coach details functions-----
+
+    function get_coach_details() {
+
+        // get coach details data so that it can be deleted
+        let coach_details_data = coach_details.data;
+
+
+        // for loop to display each home ground in its own table
+        for (let i = 0; i < coach_details_data.length; i++ ) {
+
+            create_coach_table(i, coach_details_data);
+
+        }
+
     }
 
     // functions to interact with controller
@@ -207,7 +222,7 @@ function Tournament_Organiser() {
         // check that at least two home grounds are stored so that delete operation can proceed, must
         // be at least one home ground (even if shared by many teams)
         if (document.getElementById("page_content").childElementCount > 1) {
-        
+            
             // clear any already displayed data so that only current data state is
             // displayed on completion of delete operation
             clear_home_ground_details_page();
@@ -224,6 +239,16 @@ function Tournament_Organiser() {
 
         // create new data entry table
         create_home_ground_data_entry_table();
+
+    }
+
+    // -----coach details functions-----
+
+    this.populate_coach_details = function() {
+
+        console.log("populate function called");
+        
+        get_coach_details();
 
     }
 }
