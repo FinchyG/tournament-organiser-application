@@ -57,10 +57,14 @@ function Tournament_Organiser() {
        
         // no need to check whether tournament details exist because if user
         // has not entered any then defaults will be present
-        document.getElementById("tournament_name").value = tournament_details_data.tournament_name;
-        document.getElementById("tournament_date").value = tournament_details_data.tournament_date;
-        document.getElementById("location_name").value = tournament_details_data.location_name;
-        document.getElementById("location_postcode").value = tournament_details_data.location_postcode;
+        document.getElementById("tournament_name").value = 
+            tournament_details_data.tournament_name;
+        document.getElementById("tournament_date").value = 
+            tournament_details_data.tournament_date;
+        document.getElementById("location_name").value =
+            tournament_details_data.location_name;
+        document.getElementById("location_postcode").value =
+            tournament_details_data.location_postcode;
         
     }
 
@@ -101,23 +105,53 @@ function Tournament_Organiser() {
         }
     }
 
-    function put_save_home_ground_details(id_number, user_input_home_ground_name, user_input_home_ground_postcode) {
+    function put_save_home_ground_details(
+        id_number,
+        user_input_home_ground_name,
+        user_input_home_ground_postcode) {
         
         // get home ground details data so that it can be updated
         let home_ground_details_data = home_ground_details.data;
 
-        // loop through home ground details data to find record matcheing the one with user alterations
+        // set flag variable for whether data element exists and is being upadate
+        let h_g_d_data_element_exists = false;
+
+        // loop through home ground details data to find if record matcheing the
+        // one with user alterations exists
         for (let i = 0; i < home_ground_details_data.length; i++) {
             if (i == id_number -1) {
-                home_ground_details_data[i].home_ground_name = user_input_home_ground_name;
-                home_ground_details_data[i].home_ground_postcode = user_input_home_ground_postcode;
+                h_g_d_data_element_exists = true;
             }
-
-        // return input elements to a readonly state
-        document.getElementById("home_ground_name" + id_number).setAttribute("readonly", true);
-        document.getElementById("home_ground_postcode" + id_number).setAttribute("readonly", true);
-
         }
+
+        // if data element exists update data, else add new data
+        if (h_g_d_data_element_exists == true) {
+            // loop through home ground details data to find record matcheing the
+            // one with user alterations and update it
+            for (let i = 0; i < home_ground_details_data.length; i++) {
+                if (i == id_number -1) {
+                    home_ground_details_data[i].home_ground_name = 
+                        user_input_home_ground_name;
+                    home_ground_details_data[i].home_ground_postcode = 
+                        user_input_home_ground_postcode;
+                    break;
+                }
+            }            
+        } else {
+            // cerate new data object to add to data array
+            home_ground_details_data.push({
+                "id": id_number, 
+                "home_ground_name": user_input_home_ground_name,
+                "home_ground_postcode":  user_input_home_ground_postcode
+            }) 
+        }
+
+        // clear already displayed data so that only re-edited
+        // data is displayed
+        clear_home_ground_details_page();
+
+        // display data with edited data
+        get_home_ground_details();        
     }
     
     function delete_model_home_ground_details(id_number) {
@@ -128,13 +162,15 @@ function Tournament_Organiser() {
         // loop through home ground details data to find record matcheing the one selected
         // by user to delete
         for (let i = 0; i < home_ground_details_data.length; i++) {
-            console.log("loop engaged");
             if (home_ground_details_data[i].id == id_number) {
-                console.log("id found");
                 home_ground_details_data.splice(i, 1);
                 break;
             }
         }
+
+        // clear any already displayed data so that only current data is
+        // displayed on completion of delete operation
+        clear_home_ground_details_page();        
         
         // display data without deleted item
         get_home_ground_details();
@@ -158,7 +194,92 @@ function Tournament_Organiser() {
 
     }
 
-    // functions to interact with controller
+    function put_save_coach_details(id_number,
+        user_input_coach_name,
+        user_input_phone_number,
+        user_input_email_address,
+        user_input_coach_description,
+        user_input_coach_photo) {
+        
+        // get home ground details data so that it can be updated
+        let coach_details_data = coach_details.data;
+
+        // set flag variable for whether data element exists and is being upadate
+        let c_d_data_element_exists = false;
+
+        // loop through coach details data to find if record matcheing the
+        // one with user alterations exists
+        for (let i = 0; i < coach_details_data.length; i++) {
+            if (i == id_number -1) {
+                c_d_data_element_exists = true;
+            }
+        }
+
+        // if data element exists update data, else add new data
+        if (c_d_data_element_exists == true) {
+            for (let i = 0; i < coach_details_data.length; i++) {
+                if (i == id_number -1) {
+                    coach_details_data[i].coach_name = 
+                        user_input_coach_name;
+                    coach_details_data[i].phone_number =
+                        user_input_phone_number;
+                    coach_details_data[i].email_address =
+                        user_input_email_address;
+                    coach_details_data[i].coach_description =
+                        user_input_coach_description;
+
+                    // check if photo uploaded and if so save (so
+                    // do not lose already saved image if none selected
+                    // by overwriting it with undefined)
+                    if (user_input_coach_photo != undefined) {
+                        coach_details_data[i].coach_photo =
+                            user_input_coach_photo;
+                    }
+                }
+            }
+        } else {
+            coach_details_data.push({
+                "id": id_number, 
+                "coach_name": user_input_coach_name,
+                "phone_number":  user_input_phone_number,
+				"email_address": user_input_email_address,
+				"coach_description": user_input_coach_description,
+				"coach_photo": user_input_coach_photo            
+            })
+        }
+
+        // clear already displayed data so that only re-edited data is displayed
+        clear_coach_details_page();
+
+        // display data with edited data
+        get_coach_details();
+
+    }
+
+    function delete_model_coach_details(id_number) {
+                
+        // get home ground details data so that it can be deleted
+        let coach_details_data = coach_details.data;
+        
+        // loop through coach details data to find record matcheing the one selected
+        // by user to delete
+        for (let i = 0; i < coach_details_data.length; i++) {
+            if (coach_details_data[i].id == id_number) {
+                coach_details_data.splice(i, 1);
+                break;
+            }
+        }
+
+        // clear any already displayed data so that only current data is
+        // displayed on completion of delete operation
+        clear_coach_details_page();        
+        
+        // display data without deleted item
+        get_coach_details();
+        
+    }    
+
+    // functions to interact with View
         
     // ------login funcion-----
 
@@ -206,27 +327,30 @@ function Tournament_Organiser() {
         let id_number = clicked_id.substr(clicked_id.length - 1);
         
         // get user input data from DOM
-        let user_input_home_ground_name = document.getElementById("home_ground_name" + id_number).value;
-        let user_input_home_ground_postcode = document.getElementById("home_ground_postcode" + id_number).value;
+        let user_input_home_ground_name = 
+            document.getElementById("home_ground_name" + id_number).value;
+        let user_input_home_ground_postcode =
+            document.getElementById("home_ground_postcode" + id_number).value;
 
         // call function to save user input data
-        put_save_home_ground_details(id_number, user_input_home_ground_name, user_input_home_ground_postcode);
+        put_save_home_ground_details(
+            id_number,
+            user_input_home_ground_name,
+            user_input_home_ground_postcode);
    
     }
     
     this.delete_home_ground_details = function(clicked_id) {
 
-        // get last character of button id to identify DOM elements related to it
+        // get last character of button id to identify DOM
+        // elements related to it
         let id_number = clicked_id.substr(clicked_id.length - 1);
 
-        // check that at least two home grounds are stored so that delete operation can proceed, must
-        // be at least one home ground (even if shared by many teams)
+        // check that at least one home grounds is stored so that 
+        // delete operation can proceed, must be at least one home
+        // ground (even if shared by many teams)
         if (document.getElementById("page_content").childElementCount > 1) {
             
-            // clear any already displayed data so that only current data state is
-            // displayed on completion of delete operation
-            clear_home_ground_details_page();
-
             // call function to delete selected home ground details from Model
             delete_model_home_ground_details(id_number);
         
@@ -246,9 +370,62 @@ function Tournament_Organiser() {
 
     this.populate_coach_details = function() {
 
-        console.log("populate function called");
-        
         get_coach_details();
 
     }
+
+    this.save_coach_details = function(clicked_id) {
+
+        // get last character of button id to identify DOM elements related to it
+        let id_number = clicked_id.substr(clicked_id.length - 1);
+        
+        // get user input data from DOM
+        let user_input_coach_name = document.getElementById("coach_name" + id_number).value;
+        let user_input_phone_number = document.getElementById("phone_number" + id_number).value;
+        let user_input_email_address = document.getElementById("email_address" + id_number).value;
+        let user_input_coach_description = document.getElementById("coach_description" + id_number).value;
+        let user_input_coach_photo = uploaded_img;
+
+        // call function to save user input data
+        put_save_coach_details(id_number,
+            user_input_coach_name,
+            user_input_phone_number, 
+            user_input_email_address,
+            user_input_coach_description,
+            user_input_coach_photo
+        );
+
+        // clear global file variable for next upload
+        uploaded_img = undefined;
+   
+    }
+
+    this.delete_coach_details = function(clicked_id) {
+
+        // get last character of button id to identify DOM elements related to it
+        let id_number = clicked_id.substr(clicked_id.length - 1);
+
+        // check that at least one home ground is stored so that delete operation can proceed, must
+        // be at least one home ground (even if shared by many teams)
+        if (document.getElementById("page_content").childElementCount > 1) {
+            
+            // clear any already displayed data so that only current data is
+            // displayed on completion of delete operation
+            clear_coach_details_page();
+
+            // call function to delete selected home ground details from Model
+            delete_model_coach_details(id_number);
+        
+        } else {
+            alert("cannot delete - must be at least one coach");
+        }
+    }
+
+    this.add_coach_details = function() {
+
+        // create new data entry table
+        create_coach_data_entry_table();
+
+    }
+
 }
