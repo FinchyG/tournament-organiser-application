@@ -20,17 +20,20 @@ function Tournament_Organiser() {
 
         // get valid login details data to check user input against
         let login_data = user_login_details.data;
-        // set a flag for whether user has been logged in or informed of incorrect password
+        // set a flag for whether user has been logged in or informed
+        // of incorrect password
         let login_action_taken = false;
         
         for (let key in login_data) {
-            // check whether username and password are correct and if so log user in and 
-            // move them to the home page 
-            if (login_data[key].username == username && login_data[key].password == password) {
+            // check whether username and password are correct and
+            // if so log user in and move them to the home page 
+            if (login_data[key].username == username &&
+                    login_data[key].password == password) {
                 login_action_taken = true;
                 window.location.href = "home.html";
-              // check if username is correct (password must be incorrect from prior check) and if 
-              // so inform user of incorrect password, clear password input,  and exit loop
+              // check if username is correct (password must be
+              // incorrect from prior check) and if so inform user
+              // of incorrect password, clear password input, and exit loop
             } else if (login_data[key].username == username) {
                 login_action_taken = true;
                 document.getElementById("password").value = "";
@@ -38,9 +41,9 @@ function Tournament_Organiser() {
                 break;
             }
         }
-        // inform user username is incorrect because all valid username and password
-        // combinations and usernames have been checked, clear username and password
-        // inputs
+        // inform user username is incorrect because all valid username
+        // and password combinations and usernames have been checked,
+        // clear username and password inputs
         if (login_action_taken == false) {
             document.getElementById("username").value = "";
             document.getElementById("password").value = "";
@@ -68,16 +71,24 @@ function Tournament_Organiser() {
         
     }
 
-    function put_save_tournament_details(tournament_name, tournament_date, location_name, location_postcode) {
+    function put_save_tournament_details(
+        tournament_name,
+        tournament_date,
+        location_name,
+        location_postcode) {
         
         // get tournament details data which will be updated
         let tournament_details_data = tournament_details.data[0];
 
         // set tournament details data to user input values
-        tournament_details.data[0].tournament_name = document.getElementById("tournament_name").value;
-        tournament_details.data[0].tournament_date = document.getElementById("tournament_date").value;
-        tournament_details.data[0].location_name = document.getElementById("location_name").value;
-        tournament_details.data[0].location_postcode = document.getElementById("location_postcode").value;
+        tournament_details.data[0].tournament_name =
+            document.getElementById("tournament_name").value;
+        tournament_details.data[0].tournament_date =
+            document.getElementById("tournament_date").value;
+        tournament_details.data[0].location_name =
+            document.getElementById("location_name").value;
+        tournament_details.data[0].location_postcode =
+            document.getElementById("location_postcode").value;
 
         // return input elements to a readonly state
         document.getElementById("tournament_name").setAttribute("readonly", true);
@@ -93,9 +104,9 @@ function Tournament_Organiser() {
         // get home ground details data so that it can be displayed
         let home_ground_details_data = home_ground_details.data;
 
-        // no need to check for existance of data because there cannot be fewer than one
-        // home ground (shared by participating teams) and dummy data provided on 
-        // application initialisation
+        // no need to check for existance of data because there cannot be
+        // fewer than one home ground (possibly shared by participating teams)
+        // or dummy data provided on application initialisation
 
         // for loop to display each home ground in its own table
         for (let i = 0; i < home_ground_details_data.length; i++ ) {
@@ -159,8 +170,8 @@ function Tournament_Organiser() {
         // get home ground details data so that it can be deleted
         let home_ground_details_data = home_ground_details.data;
         
-        // loop through home ground details data to find record matcheing the one selected
-        // by user to delete
+        // loop through home ground details data to find record matcheing
+        // the one selected by user to delete
         for (let i = 0; i < home_ground_details_data.length; i++) {
             if (home_ground_details_data[i].id == id_number) {
                 home_ground_details_data.splice(i, 1);
@@ -261,8 +272,8 @@ function Tournament_Organiser() {
         // get home ground details data so that it can be deleted
         let coach_details_data = coach_details.data;
         
-        // loop through coach details data to find record matcheing the one selected
-        // by user to delete
+        // loop through coach details data to find record matcheing the
+        // one selected by user to delete
         for (let i = 0; i < coach_details_data.length; i++) {
             if (coach_details_data[i].id == id_number) {
                 coach_details_data.splice(i, 1);
@@ -309,9 +320,13 @@ function Tournament_Organiser() {
         let location_postcode = document.getElementById("location_postcode").value;
 
         // call function to save user input data
-        put_save_tournament_details(tournament_name, tournament_date, location_name, location_postcode);
+        put_save_tournament_details(
+            tournament_name,
+            tournament_date,
+            location_name,
+            location_postcode);
     
-    };
+    }
 
     // -----home ground details functions-----
 
@@ -380,10 +395,14 @@ function Tournament_Organiser() {
         let id_number = clicked_id.substr(clicked_id.length - 1);
         
         // get user input data from DOM
-        let user_input_coach_name = document.getElementById("coach_name" + id_number).value;
-        let user_input_phone_number = document.getElementById("phone_number" + id_number).value;
-        let user_input_email_address = document.getElementById("email_address" + id_number).value;
-        let user_input_coach_description = document.getElementById("coach_description" + id_number).value;
+        let user_input_coach_name =
+            document.getElementById("coach_name" + id_number).value;
+        let user_input_phone_number =
+            document.getElementById("phone_number" + id_number).value;
+        let user_input_email_address =
+            document.getElementById("email_address" + id_number).value;
+        let user_input_coach_description =
+            document.getElementById("coach_description" + id_number).value;
         let user_input_coach_photo = uploaded_img;
 
         // call function to save user input data
@@ -405,8 +424,8 @@ function Tournament_Organiser() {
         // get last character of button id to identify DOM elements related to it
         let id_number = clicked_id.substr(clicked_id.length - 1);
 
-        // check that at least one home ground is stored so that delete operation can proceed, must
-        // be at least one home ground (even if shared by many teams)
+        // check that at least one coach is stored so that delete operation
+        // can proceed, must be at least one coach (even if shared by many teams)
         if (document.getElementById("page_content").childElementCount > 1) {
             
             // clear any already displayed data so that only current data is
