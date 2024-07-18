@@ -25,7 +25,7 @@ function create_home_ground_table(i, home_ground_details_data) {
     // add row for a table header to separate tables
     const new_row0 = new_table.insertRow(0);
     const new_cell0 = new_row0.insertCell(0);
-    const cell_header = "<p>home ground " + (i + 1) + "</p>";
+    const cell_header = "<p><u>home ground " + (i + 1) + "</u></p>";
     new_cell0.innerHTML = cell_header;
 
     // add row for home ground name display / input
@@ -96,7 +96,7 @@ function create_home_ground_data_entry_table() {
     const new_row0 = new_table.insertRow(0);
     const new_cell0 = new_row0.insertCell(0);
     const cell_header =
-        "<p>home ground " + (num_displayed_elements + 1) + "</p>";
+        "<p><u>home ground " + (num_displayed_elements + 1) + "</u></p>";
     new_cell0.innerHTML = cell_header;
 
     // add row for home ground name display / input

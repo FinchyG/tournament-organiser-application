@@ -15,19 +15,21 @@
 
         <h1 id="page_title">Team Details</h1>
 
+        <button onclick="controller.add_team_details()">add team</button>
+
         <div id="page_content">
 
         </div>
     </div>
 
-
-
     <script src="jquery-3.7.1.min.js"></script>
-    <script src="./DOM_helpers/t_d.js"></script>
-    <script src="./model/tournament_details.js"></script>
+    <script src="./DOM_helpers/team_d.js"></script>
+    <script src="./model/team_details.js"></script>
+    <script src="./model/coach_details.js"></script>
+    <script src="./model/home_ground_details.js"></script>
     <script src="controller.js"></script>
     <script>window.addEventListener("load", () => {
-        controller.populate_tournament_details();
+        controller.populate_team_details();
     });</script>    
 </body>
 </html>

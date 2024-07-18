@@ -48,13 +48,17 @@ textarea {
     filter: drop-shadow(0.25rem 0.25rem rgba(166, 152, 127, 0.46));    
 }
 
-input, button {
+input, button, select {
     display: block;
     width: 10rem;
     margin: auto;
     border-radius: 2rem;
     text-align: center;
     filter: drop-shadow(0.25rem 0.25rem rgba(166, 152, 127, 0.46));
+}
+
+option {
+    font-size: 0.65rem;
 }
 
 .edit_button, .save_button, .delete_button {

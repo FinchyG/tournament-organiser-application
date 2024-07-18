@@ -31,7 +31,7 @@ function create_coach_table(i, coach_details_data) {
     // add row for a table header to separate tables
     const new_row0 = new_table.insertRow(0);
     const new_cell0 = new_row0.insertCell(0);
-    const cell_header = "<p>coach " + (i + 1) + "</p>";
+    const cell_header = "<p><u>coach " + (i + 1) + "</u></p>";
     new_cell0.innerHTML = cell_header;
         
     // add row for coach name display / input
@@ -119,15 +119,17 @@ function create_coach_data_entry_table() {
     // add row for a table header to separate tables
     const new_row0 = new_table.insertRow(0);
     const new_cell0 = new_row0.insertCell(0);
-    const cell_header = "<p>coach " + (num_displayed_elements + 1) + "</p>";
+    const cell_header = "<p><u>coach " + (num_displayed_elements + 1) + "</u></p>";
     new_cell0.innerHTML = cell_header;
         
     // add row for coach name display / input
     const new_row1 = new_table.insertRow(1);
     const new_cell1 = new_row1.insertCell(0);
     new_cell1.innerHTML = "<input type='text' id='new_cell1' />";
-    document.getElementById("new_cell1").setAttribute("id", `coach_name${new_data_element_id}`);
-    document.getElementById(`coach_name${new_data_element_id}`).setAttribute("value", "enter coach name");
+    document.getElementById("new_cell1")
+        .setAttribute("id", `coach_name${new_data_element_id}`);
+    document.getElementById(`coach_name${new_data_element_id}`)
+        .setAttribute("value", "enter coach name");
     
     // add row for coach phone number display / input
     const new_row2 = new_table.insertRow(2);
