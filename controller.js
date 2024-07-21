@@ -393,6 +393,71 @@ function Tournament_Organiser() {
         get_team_details();
         
     }
+
+    // -----fixtures results functions-----
+
+    function display_fixtures_results() {
+
+        // get fixtures / results data to display
+        let fixtures_results_details_data = fixtures_results_details.data;
+        
+        // call DOM helper function to create table for data display
+        create_fixtures_results_table(fixtures_results_details_data);
+
+    }
+
+    function controller_create_fixtures() {
+        
+        // get team details data to create fixtures from
+        let team_details_data = team_details.data;
+
+        // get fixtures / results data to update
+        let fixtures_results_details_data = fixtures_results_details.data;
+
+        // call function to clear display of old fixtures / results
+        clear_fxitures_results_page();
+
+        // check whether there are existing fixture details and 
+        // confirm whether user wants to overwrite 
+        if(fixtures_results_details_data.length != 0) {
+            if(confirm("Fixtures and reslts already exist - do you want to overwrite?")) {
+
+                // delete current fixtures / results data so new data is not pushed to end of old
+                fixtures_results_details.data = [];
+
+                // call DOM helper function to create and dispaly fixtures
+                dom_helper_create_fixtures(team_details_data, fixtures_results_details_data);
+
+                // call function to display new fixtures
+                display_fixtures_results();
+
+            } else {
+                // re-display unchanged fixtures / results
+                display_fixtures_results();
+            }
+        }
+    }
+
+    function  put_save_scores() {
+
+        // get fixtures / results details data so that scores can be updated or saved to
+        let fixtures_results_details_data = fixtures_results_details.data;
+
+        // loop through input scores and update fixtures / results data
+        for (let i = 0; i < f_r_table.rows.length; i++ ) {
+            fixtures_results_details_data[i].team_1_goals =
+                document.getElementById(`team_1_goals_cell${i}`).value;
+            fixtures_results_details_data[i].team_2_goals =
+                document.getElementById(`team_2_goals_cell${i}`).value;
+        }
+        
+        // loop through scores inputs to reset readonly attributes
+        for (let i = 0; i < f_r_table.rows.length; i++ ) {
+            document.getElementById(`team_1_goals_cell${i}`).setAttribute("readonly", true);
+            document.getElementById(`team_2_goals_cell${i}`).setAttribute("readonly", true);
+        }        
+
+    }
     
 
     // functions to interact with View
@@ -625,12 +690,32 @@ function Tournament_Organiser() {
         // allowed by the application
         if (document.getElementById("page_content").childElementCount < 8) {
 
-            // create new data entry table
+            // call function to create new data entry table
             create_team_data_entry_table(coach_details_data, home_ground_details_data);
 
         } else {
             alert("cannot add - cannot have more than eight teams");
         }
+    }
+
+    // -----fixtures / results functions-----   
+    
+    this.populate_fixtures_results_details = function() {
+
+        display_fixtures_results();
+
+    }
+
+    this.create_fixtures = function() {
+
+        controller_create_fixtures();
+
+    }
+
+    this.save_scores = function() {
+
+        put_save_scores();
+
     }
 
 }

@@ -34,6 +34,26 @@ body {
     margin-top: 2rem;
 }
 
+.round_display {
+    width: 4rem;
+}
+
+.team_display {
+    width: 6rem;
+}
+
+.goals_display {
+    width: 1rem;
+}
+
+h3 {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;    
+}
+
 img {
     display: block;
     margin:auto;
