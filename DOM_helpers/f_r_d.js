@@ -112,56 +112,6 @@ function shuffleTeams(teams) {
     }
 }
 
-function dom_helper_create_fixtures(
-    team_details_data)
-{
-
-    // variable to store teams to create fixtures for
-    let teams_arr = [];
-
-    // variable to keep track of fixtures rounds
-    let round_count = 1;
-
-    // loop through teams data to get all teams
-    for(index in team_details_data){
-        teams_arr.push(team_details_data[index].team_name);
-    }
-
-    // call helper function to randomly shuffle team order to create random fixtures list
-    shuffleTeams(teams_arr);
-
-    // for odd number of teams add a bye team to complete fixtures for each round
-    if (teams_arr.length % 2 == 1) {
-        teams.push("bye team");
-    }
-
-    // Create fixtures with one fewer rounds than number of teams
-    for (let i = 0; i < teams_arr.length - 1; i++) {
-        
-        // pair first team with last team, second with penultimate, etc...
-        for (let j = 0; j < teams_arr.length / 2; j++) {
-            fixtures_results_details.data.push(
-                {
-                    "round": round_count,
-                    "team_1": teams_arr[j],
-                    "team_1_goals": "",
-                    "team_2_gaols": "",
-                    "team_2": teams_arr[teams_arr.length - 1 - j]
-                }
-            );
-        }
-        
-        // increase round count at conclusion of fixture round
-        if(i != teams_arr.length - 2){
-            round_count++;
-        }
-        
-        // Move last array team to second array position to create new fixtures  
-        let lastTeam = teams_arr.pop();
-        teams_arr.splice(1, 0, lastTeam);
-    }
-}
-
 function clear_fxitures_results_page() {
     
     // create variables to store DOM elements and reduce while loop processing
