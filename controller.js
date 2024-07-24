@@ -508,6 +508,18 @@ function Tournament_Organiser() {
         }        
 
     }
+
+    // -----league table function-----
+    
+    function controller_create_league_table() {
+
+        // get results data to construct league table
+        let fixtures_results_details_data = fixtures_results_details.data;        
+        
+        // call function to create league table in DOM
+        dom_helper_create_league_table(fixtures_results_details_data);
+
+    }
     
 
     // functions to interact with View
@@ -765,6 +777,15 @@ function Tournament_Organiser() {
     this.save_scores = function() {
 
         put_save_scores();
+
+    }
+
+    // -----league table functions-----
+
+    this.create_league_table = function() {
+
+        // call function to get necessary data
+        controller_create_league_table();
 
     }
 

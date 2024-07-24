@@ -46,6 +46,10 @@ body {
     width: 1rem;
 }
 
+.goals_totals_display {
+    width: 1.5rem;
+}
+
 h3 {
     width: 80%;
     margin: auto;
