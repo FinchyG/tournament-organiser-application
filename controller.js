@@ -521,7 +521,6 @@ function Tournament_Organiser() {
 
     }
     
-
     // functions to interact with View
         
     // ------login funcion-----
@@ -788,5 +787,4 @@ function Tournament_Organiser() {
         controller_create_league_table();
 
     }
-
 }
