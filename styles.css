@@ -30,6 +30,11 @@ body {
     margin: auto;
 }
 
+#background_color_selector {
+    margin-left: 0;
+    margin-bottom: 0.25rem;
+}
+
 .login_element, .navigation_element {
     margin-top: 2rem;
 }
