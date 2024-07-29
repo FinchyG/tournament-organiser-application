@@ -24,74 +24,74 @@ function create_coach_table(i, coach_details_data) {
     let c_d_coach_description = coach_details_data[i].coach_description;
     
     // create table element and insert into page_content div
-    const new_table = document.createElement("table");
-    document.getElementById("page_content").appendChild(new_table);
-    new_table.setAttribute("id", "table" + c_d_id);
+    const c_d_table = document.createElement("table");
+    document.getElementById("page_content").appendChild(c_d_table);
+    c_d_table.setAttribute("id", "table" + c_d_id);
 
     // add row for a table header to separate tables
-    const new_row0 = new_table.insertRow(0);
-    const new_cell0 = new_row0.insertCell(0);
+    const header_row = c_d_table.insertRow(-1);
+    const header_cell = header_row.insertCell(-1);
     const cell_header = "<p><u>coach " + (i + 1) + "</u></p>";
-    new_cell0.innerHTML = cell_header;
+    header_cell.innerHTML = cell_header;
         
     // add row for coach name display / input
-    const new_row1 = new_table.insertRow(1);
-    const new_cell1 = new_row1.insertCell(0);
-    new_cell1.innerHTML = "<input type='text' id='new_cell1' readonly />";
-    document.getElementById("new_cell1").setAttribute("id", `coach_name${c_d_id}`);
+    const name_row = c_d_table.insertRow(-1);
+    const name_cell = name_row.insertCell(-1);
+    name_cell.innerHTML = "<input type='text' id='name_cell' readonly />";
+    document.getElementById("name_cell").setAttribute("id", `coach_name${c_d_id}`);
     document.getElementById(`coach_name${c_d_id}`)
         .setAttribute("value", `${c_d_coach_name}`);
     
     // add row for coach phone number display / input
-    const new_row2 = new_table.insertRow(2);
-    const new_cell2 = new_row2.insertCell(0);
-    new_cell2.innerHTML = "<input type='text' id='new_cell2' readonly />";
-    document.getElementById("new_cell2").setAttribute("id", `phone_number${c_d_id}`);
+    const phone_row = c_d_table.insertRow(-1);
+    const phone_cell = phone_row.insertCell(-1);
+    phone_cell.innerHTML = "<input type='text' id='phone_cell' readonly />";
+    document.getElementById("phone_cell").setAttribute("id", `phone_number${c_d_id}`);
     document.getElementById(`phone_number${c_d_id}`)
         .setAttribute("value", `${c_d_phone_number}`);
     
     // add row for coach email address display / input
-    const new_row3 = new_table.insertRow(3);
-    const new_cell3 = new_row3.insertCell(0);
-    new_cell3.innerHTML = "<input type='text' id='new_cell3' readonly />";
-    document.getElementById("new_cell3").setAttribute("id", `email_address${c_d_id}`);
+    const email_row = c_d_table.insertRow(-1);
+    const email_cell = email_row.insertCell(-1);
+    email_cell.innerHTML = "<input type='text' id='email_cell' readonly />";
+    document.getElementById("email_cell").setAttribute("id", `email_address${c_d_id}`);
     document.getElementById(`email_address${c_d_id}`)
         .setAttribute("value", `${c_d_email_address}`);
 
     // add cell for coach description display / input
-    const new_row4 = new_table.insertRow(4);
-    const new_cell4 = new_row4.insertCell(0);
-    new_cell4.innerHTML = "<textarea id='new_cell4' rows='4' cols='20' readonly></textarea>";
-    document.getElementById("new_cell4").setAttribute("id", `coach_description${c_d_id}`);
+    const description_row = c_d_table.insertRow(-1);
+    const description_cell = description_row.insertCell(-1);
+    description_cell.innerHTML = "<textarea id='description_cell' rows='4' cols='20' readonly></textarea>";
+    document.getElementById("description_cell").setAttribute("id", `coach_description${c_d_id}`);
     document.getElementById(`coach_description${c_d_id}`).innerText = `${c_d_coach_description}`;    
 
     // add row for coach photo display / input
-    const new_row5 = new_table.insertRow(5);
-    const new_cell5 = new_row5.insertCell(0);
-    new_cell5.innerHTML = "<img id='new_cell5' alt='coach photo' width='100rem' height='80rem' />";
-    document.getElementById("new_cell5").setAttribute("id", `coach_photo${c_d_id}`);
+    const photo_row = c_d_table.insertRow(-1);
+    const photo_cell = photo_row.insertCell(-1);
+    photo_cell.innerHTML = "<img id='photo_cell' alt='coach photo' width='100rem' height='80rem' />";
+    document.getElementById("photo_cell").setAttribute("id", `coach_photo${c_d_id}`);
     document.getElementById(`coach_photo${c_d_id}`).setAttribute("src", `${c_d_coach_photo}`);
 
     // add row for edit button
-    const new_row6 = new_table.insertRow(6);
-    const new_cell6 = new_row6.insertCell(0);
-    new_cell6.innerHTML = "<button class='edit_button' id='new_cell6'" +
+    const edit_row = c_d_table.insertRow(-1);
+    const edit_cell = edit_row.insertCell(-1);
+    edit_cell.innerHTML = "<button class='edit_button' id='edit_cell'" +
         "onclick='edit_coach_details(this.id)'>edit</button>";
-    document.getElementById("new_cell6").setAttribute("id", `edit_button${c_d_id}`);
+    document.getElementById("edit_cell").setAttribute("id", `edit_button${c_d_id}`);
 
     // add row for save button
-    const new_row7 = new_table.insertRow(7);
-    const new_cell7 = new_row7.insertCell(0);
-    new_cell7.innerHTML = "<button class='save_button' id='new_cell7'" +
+    const save_row = c_d_table.insertRow(-1);
+    const save_cell = save_row.insertCell(-1);
+    save_cell.innerHTML = "<button class='save_button' id='save_cell'" +
         "onclick='controller.save_coach_details(this.id)''>save</button>";
-    document.getElementById("new_cell7").setAttribute("id", `save_button${c_d_id}`);
+    document.getElementById("save_cell").setAttribute("id", `save_button${c_d_id}`);
 
     // add row for delete button
-    const new_row8 = new_table.insertRow(8);
-    const new_cell8 = new_row8.insertCell(0);
-    new_cell8.innerHTML = "<button class='delete_button' id='new_cell8'" +
+    const delete_row = c_d_table.insertRow(-1);
+    const delete_cell = delete_row.insertCell(-1);
+    delete_cell.innerHTML = "<button class='delete_button' id='delete_cell'" +
         "onclick='controller.delete_coach_details(this.id)''>delete</button>";
-    document.getElementById("new_cell8").setAttribute("id", `delete_button${c_d_id}`);
+    document.getElementById("delete_cell").setAttribute("id", `delete_button${c_d_id}`);
 
 }
 
@@ -112,80 +112,80 @@ function create_coach_data_entry_table() {
         document.getElementById("page_content").childElementCount;
 
     // create table element and insert into page_content div
-    const new_table = document.createElement("table");
-    document.getElementById("page_content").appendChild(new_table);
-    new_table.setAttribute("id", "table" + new_data_element_id);
+    const c_d_table = document.createElement("table");
+    document.getElementById("page_content").appendChild(c_d_table);
+    c_d_table.setAttribute("id", "table" + new_data_element_id);
 
     // add row for a table header to separate tables
-    const new_row0 = new_table.insertRow(0);
-    const new_cell0 = new_row0.insertCell(0);
+    const header_row = c_d_table.insertRow(0);
+    const header_cell = header_row.insertCell(0);
     const cell_header = "<p><u>coach " + (num_displayed_elements + 1) + "</u></p>";
-    new_cell0.innerHTML = cell_header;
+    header_cell.innerHTML = cell_header;
         
     // add row for coach name display / input
-    const new_row1 = new_table.insertRow(1);
-    const new_cell1 = new_row1.insertCell(0);
-    new_cell1.innerHTML = "<input type='text' id='new_cell1' />";
-    document.getElementById("new_cell1")
+    const name_row = c_d_table.insertRow(1);
+    const name_cell = name_row.insertCell(0);
+    name_cell.innerHTML = "<input type='text' id='name_cell' />";
+    document.getElementById("name_cell")
         .setAttribute("id", `coach_name${new_data_element_id}`);
     document.getElementById(`coach_name${new_data_element_id}`)
         .setAttribute("value", "enter coach name");
     
     // add row for coach phone number display / input
-    const new_row2 = new_table.insertRow(2);
-    const new_cell2 = new_row2.insertCell(0);
-    new_cell2.innerHTML = "<input type='text' id='new_cell2' />";
-    document.getElementById("new_cell2")
+    const phone_row = c_d_table.insertRow(2);
+    const phone_cell = phone_row.insertCell(0);
+    phone_cell.innerHTML = "<input type='text' id='phone_cell' />";
+    document.getElementById("phone_cell")
         .setAttribute("id", `phone_number${new_data_element_id}`);
     document.getElementById(`phone_number${new_data_element_id}`)
         .setAttribute("value", "enter phone number");
     
     // add row for coach email address display / input
-    const new_row3 = new_table.insertRow(3);
-    const new_cell3 = new_row3.insertCell(0);
-    new_cell3.innerHTML = "<input type='text' id='new_cell3' />";
-    document.getElementById("new_cell3")
+    const email_row = c_d_table.insertRow(3);
+    const email_cell = email_row.insertCell(0);
+    email_cell.innerHTML = "<input type='text' id='email_cell' />";
+    document.getElementById("email_cell")
         .setAttribute("id", `email_address${new_data_element_id}`);
     document.getElementById(`email_address${new_data_element_id}`)
         .setAttribute("value", "enter email address");
 
     // add cell for coach description display / input
-    const new_row4 = new_table.insertRow(4);
-    const new_cell4 = new_row4.insertCell(0);
-    new_cell4.innerHTML = "<textarea id='new_cell4' rows='4'" +
+    const description_row = c_d_table.insertRow(4);
+    const description_cell = description_row.insertCell(0);
+    description_cell.innerHTML = "<textarea id='description_cell' rows='4'" +
         "cols='20'>enter coach description</textarea>";
-    document.getElementById("new_cell4")
+    document.getElementById("description_cell")
         .setAttribute("id", `coach_description${new_data_element_id}`);
     
     // add row for coach photo display / input
-    const new_row5 = new_table.insertRow(5);
-    const new_cell5 = new_row5.insertCell(0);
-    new_cell5.innerHTML = "<div><p>upload new photo:</p>" +
+    const photo_row = c_d_table.insertRow(5);
+    const photo_cell = photo_row.insertCell(0);
+    photo_cell.innerHTML = "<div><p>upload new photo:</p>" +
         "<input type='file' id='img_upld_btn' onchange='image_file_upload()'" +
         "accept='image/png, image/jpeg'></div>";
 
     // add row for edit button
-    const new_row6 = new_table.insertRow(6);
-    const new_cell6 = new_row6.insertCell(0);
-    new_cell6.innerHTML =
-        "<button class='edit_button' id='new_cell6' onclick='edit_coach_details(this.id)'>edit</button>";
-    document.getElementById("new_cell6")
+    const edit_row = c_d_table.insertRow(6);
+    const edit_cell = edit_row.insertCell(0);
+    edit_cell.innerHTML =
+        "<button class='edit_button' id='edit_cell' onclick='edit_coach_details(this.id)'>edit</button>";
+    document.getElementById("edit_cell")
         .setAttribute("id", `edit_button${new_data_element_id}`);
 
     // add row for save button
-    const new_row7 = new_table.insertRow(7);
-    const new_cell7 = new_row7.insertCell(0);
-    new_cell7.innerHTML = "<button class='save_button' id='new_cell7'" +
+    const save_row = c_d_table.insertRow(7);
+    const save_cell = save_row.insertCell(0);
+    save_cell.innerHTML = "<button class='save_button' id='save_cell'" +
         "onclick='controller.save_coach_details(this.id)''>save</button>";
-    document.getElementById("new_cell7")
+    document.getElementById("save_cell")
         .setAttribute("id", `save_button${new_data_element_id}`);
 
     // add row for delete button
-    const new_row8 = new_table.insertRow(8);
-    const new_cell8 = new_row8.insertCell(0);
-    new_cell8.innerHTML = "<button class='delete_button' id='new_cell8'" +
+    const delete_row = c_d_table.insertRow(8);
+    const delete_cell = delete_row.insertCell(0);
+    delete_cell.innerHTML = "<button class='delete_button' id='delete_cell'" +
         "onclick='controller.delete_coach_details(this.id)''>delete</button>";
-    document.getElementById("new_cell8")
+    document.getElementById("delete_cell")
         .setAttribute("id", `delete_button${new_data_element_id}`);    
 
     // move user to bottom of page where new data entry table will appear

@@ -54,69 +54,69 @@ function create_team_table(
     }
 
     // create table element and insert into page_content div
-    const new_table = document.createElement("table");
-    document.getElementById("page_content").appendChild(new_table);
-    new_table.setAttribute("id", "table" + team_d_id);
+    const team_table = document.createElement("table");
+    document.getElementById("page_content").appendChild(team_table);
+    team_table.setAttribute("id", "table" + team_d_id);
 
     // add row for a table header to separate tables
-    const new_row0 = new_table.insertRow(0);
-    const new_cell0 = new_row0.insertCell(0);
+    const header_row = team_table.insertRow(-1);
+    const header_cell = header_row.insertCell(-1);
     const cell_header = "<p><u>team " + (i + 1) + "</u></p>";
-    new_cell0.innerHTML = cell_header;
+    header_cell.innerHTML = cell_header;
     
     // add row for team name display / input
-    const new_row1 = new_table.insertRow(1);
-    const new_cell1 = new_row1.insertCell(0);
-    new_cell1.innerHTML = "<input type='text' id='new_cell1' readonly />";
-    document.getElementById("new_cell1").setAttribute("id", `team_name${team_d_id}`);
+    const t_n_row = team_table.insertRow(-1);
+    const t_n_cell = t_n_row.insertCell(-1);
+    t_n_cell.innerHTML = "<input type='text' id='t_n_cell' readonly />";
+    document.getElementById("t_n_cell").setAttribute("id", `team_name${team_d_id}`);
     document.getElementById(`team_name${team_d_id}`)
         .setAttribute("value", `${team_d_team_name}`);    
 
     // add rows for team coach display
-    const new_row2 = new_table.insertRow(2);
-    const new_cell2 = new_row2.insertCell(0);
-    new_cell2.innerHTML = "<p>team coach</p>";    
+    const c_n_header_row = team_table.insertRow(-1);
+    const c_n_header_cell = c_n_header_row.insertCell(-1);
+    c_n_header_cell.innerHTML = "<p>team coach</p>";    
 
-    const new_row3 = new_table.insertRow(3);    
-    const new_cell3 = new_row3.insertCell(0);    
-    new_cell3.innerHTML = "<input type='text' id='new_cell3' readonly />";
-    document.getElementById("new_cell3").setAttribute("id", `coach_name${team_d_id}`);
+    const c_n_row = team_table.insertRow(-1);    
+    const c_n_cell = c_n_row.insertCell(-1);    
+    c_n_cell.innerHTML = "<input type='text' id='c_n_cell' readonly />";
+    document.getElementById("c_n_cell").setAttribute("id", `coach_name${team_d_id}`);
     document.getElementById(`coach_name${team_d_id}`)
         .setAttribute("value", team_coach_name);
 
     // add rows for team home ground display
-    const new_row4 = new_table.insertRow(4);
-    const new_cell4 = new_row4.insertCell(0);
-    new_cell4.innerHTML = "<p>team home ground</p>";    
+    const t_g_n_header_row = team_table.insertRow(-1);
+    const t_g_n_header_cell = t_g_n_header_row.insertCell(-1);
+    t_g_n_header_cell.innerHTML = "<p>team home ground</p>";    
 
-    const new_row5 = new_table.insertRow(5);    
-    const new_cell5 = new_row5.insertCell(0);    
-    new_cell5.innerHTML = "<input type='text' id='new_cell5' readonly />";
-    document.getElementById("new_cell5")
+    const h_g_n_row = team_table.insertRow(-1);    
+    const h_g_n_cell = h_g_n_row.insertCell(-1);    
+    h_g_n_cell.innerHTML = "<input type='text' id='h_g_n_cell' readonly />";
+    document.getElementById("h_g_n_cell")
         .setAttribute("id", `home_ground_name${team_d_id}`);
     document.getElementById(`home_ground_name${team_d_id}`)
         .setAttribute("value", team_home_ground_name);
 
     // add row for edit button
-    const new_row6 = new_table.insertRow(6);
-    const new_cell6 = new_row6.insertCell(0);
-    new_cell6.innerHTML = "<button class='edit_button' id='new_cell6'" +
+    const edit_row = team_table.insertRow(-1);
+    const edit_cell = edit_row.insertCell(-1);
+    edit_cell.innerHTML = "<button class='edit_button' id='edit_cell'" +
         "onclick='controller.edit_coach_details(this.id)'>edit</button>";
-    document.getElementById("new_cell6").setAttribute("id", `edit_button${team_d_id}`);
+    document.getElementById("edit_cell").setAttribute("id", `edit_button${team_d_id}`);
 
     // add row for save button
-    const new_row7 = new_table.insertRow(7);
-    const new_cell7 = new_row7.insertCell(0);
-    new_cell7.innerHTML = "<button class='save_button' id='new_cell7'" +
+    const save_row = team_table.insertRow(-1);
+    const save_cell = save_row.insertCell(-1);
+    save_cell.innerHTML = "<button class='save_button' id='save_cell'" +
         "onclick='controller.save_team_details(this.id)''>save</button>";
-    document.getElementById("new_cell7").setAttribute("id", `save_button${team_d_id}`);
+    document.getElementById("save_cell").setAttribute("id", `save_button${team_d_id}`);
 
     // add row for delete button
-    const new_row8 = new_table.insertRow(8);
-    const new_cell8 = new_row8.insertCell(0);
-    new_cell8.innerHTML = "<button class='delete_button' id='new_cell8'" +
+    const delete_row = team_table.insertRow(-1);
+    const delete_cell = delete_row.insertCell(-1);
+    delete_cell.innerHTML = "<button class='delete_button' id='delete_cell'" +
         "onclick='controller.delete_team_details(this.id)''>delete</button>";
-    document.getElementById("new_cell8").setAttribute("id", `delete_button${team_d_id}`);
+    document.getElementById("delete_cell").setAttribute("id", `delete_button${team_d_id}`);
 
 }
 
@@ -193,43 +193,43 @@ function create_team_data_entry_table(coach_details_data, home_ground_details_da
         document.getElementById("page_content").childElementCount; 
         
     // create table element and insert into page_content div
-    const new_table = document.createElement("table");
-    document.getElementById("page_content").appendChild(new_table);
-    new_table.setAttribute("id", "table" + new_data_element_id);
+    const team_table = document.createElement("table");
+    document.getElementById("page_content").appendChild(team_table);
+    team_table.setAttribute("id", "table" + new_data_element_id);
     
     // add row for a table header to separate tables
-    const new_row0 = new_table.insertRow(0);
-    const new_cell0 = new_row0.insertCell(0);
+    const header_row = team_table.insertRow(0);
+    const header_cell = header_row.insertCell(0);
     const cell_header = "<p><u>team " + (num_displayed_elements + 1) + "</u></p>";
-    new_cell0.innerHTML = cell_header;
+    header_cell.innerHTML = cell_header;
 
     // add row for team name display / input
-    const new_row1 = new_table.insertRow(1);
-    const new_cell1 = new_row1.insertCell(0);
-    new_cell1.innerHTML = "<input type='text' id='new_cell1' />";
-    document.getElementById("new_cell1")
+    const t_n_row = team_table.insertRow(1);
+    const t_n_cell = t_n_row.insertCell(0);
+    t_n_cell.innerHTML = "<input type='text' id='t_n_cell' />";
+    document.getElementById("t_n_cell")
         .setAttribute("id", `team_name${new_data_element_id}`);
     document.getElementById(`team_name${new_data_element_id}`)
         .setAttribute("value", "enter team name");
 
     // insert select inputs for coach name and home ground name
 
-    const new_row2 = new_table.insertRow(2);
-    const new_cell2 = new_row2.insertCell(0);
-    new_cell2.innerHTML = "<p>team coach</p>"; 
+    const c_n_header_row = team_table.insertRow(2);
+    const c_n_header_cell = c_n_header_row.insertCell(0);
+    c_n_header_cell.innerHTML = "<p>team coach</p>"; 
 
-    const new_select_row = new_table.insertRow(3);
+    const new_select_row = team_table.insertRow(3);
     const new_select_cell = new_select_row.insertCell(0); 
     new_select_cell.innerHTML = "<select id='new_select_cell'>" +
         "<option value='unselected'>unselected</option></select>";
     document.getElementById("new_select_cell")
         .setAttribute("id", `coach_name${new_data_element_id}`);
 
-    const new_row4 = new_table.insertRow(4);
-    const new_cell4 = new_row4.insertCell(0);
-    new_cell4.innerHTML = "<p>team home ground</p>"; 
+    const t_g_n_header_row = team_table.insertRow(4);
+    const t_g_n_header_cell = t_g_n_header_row.insertCell(0);
+    t_g_n_header_cell.innerHTML = "<p>team home ground</p>"; 
         
-    const new_select_row1 = new_table.insertRow(5);
+    const new_select_row1 = team_table.insertRow(5);
     const new_select_cell1 = new_select_row1.insertCell(0); 
     new_select_cell1.innerHTML = "<select id='new_select_cell1'>" + 
     "<option value='unselected'>unselected</option></select>";
@@ -237,27 +237,27 @@ function create_team_data_entry_table(coach_details_data, home_ground_details_da
         .setAttribute("id", `home_ground_name${new_data_element_id}`);
 
     // add row for edit button
-    const new_row6 = new_table.insertRow(6);
-    const new_cell6 = new_row6.insertCell(0);
-    new_cell6.innerHTML = "<button class='edit_button' id='new_cell6'" +
+    const edit_row = team_table.insertRow(6);
+    const edit_cell = edit_row.insertCell(0);
+    edit_cell.innerHTML = "<button class='edit_button' id='edit_cell'" +
         "onclick='controller.edit_coach_details(this.id)'>edit</button>";
-    document.getElementById("new_cell6")
+    document.getElementById("edit_cell")
         .setAttribute("id", `edit_button${new_data_element_id}`);
 
     // add row for save button
-    const new_row7 = new_table.insertRow(7);
-    const new_cell7 = new_row7.insertCell(0);
-    new_cell7.innerHTML = "<button class='save_button' id='new_cell7'" +
+    const save_row = team_table.insertRow(7);
+    const save_cell = save_row.insertCell(0);
+    save_cell.innerHTML = "<button class='save_button' id='save_cell'" +
         "onclick='controller.save_team_details(this.id)''>save</button>";
-    document.getElementById("new_cell7")
+    document.getElementById("save_cell")
         .setAttribute("id", `save_button${new_data_element_id}`);
 
     // add row for delete button
-    const new_row8 = new_table.insertRow(8);
-    const new_cell8 = new_row8.insertCell(0);
-    new_cell8.innerHTML = "<button class='delete_button' id='new_cell8'" +
+    const delete_row = team_table.insertRow(8);
+    const delete_cell = delete_row.insertCell(0);
+    delete_cell.innerHTML = "<button class='delete_button' id='delete_cell'" +
         "onclick='controller.delete_team_details(this.id)''>delete</button>";
-    document.getElementById("new_cell8")
+    document.getElementById("delete_cell")
         .setAttribute("id", `delete_button${new_data_element_id}`);
 
     // call helper functions to dynamically create arrays to populate select options
