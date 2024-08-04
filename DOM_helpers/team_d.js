@@ -101,7 +101,7 @@ function create_team_table(
     const edit_row = team_table.insertRow(-1);
     const edit_cell = edit_row.insertCell(-1);
     edit_cell.innerHTML = "<button class='edit_button' id='edit_cell'" +
-        "onclick='controller.edit_coach_details(this.id)'>edit</button>";
+        "onclick='controller.edit_team_details(this.id)'>edit</button>";
     document.getElementById("edit_cell").setAttribute("id", `edit_button${team_d_id}`);
 
     // add row for save button
@@ -240,7 +240,7 @@ function create_team_data_entry_table(coach_details_data, home_ground_details_da
     const edit_row = team_table.insertRow(6);
     const edit_cell = edit_row.insertCell(0);
     edit_cell.innerHTML = "<button class='edit_button' id='edit_cell'" +
-        "onclick='controller.edit_coach_details(this.id)'>edit</button>";
+        "onclick='controller.edit_team_details(this.id)'>edit</button>";
     document.getElementById("edit_cell")
         .setAttribute("id", `edit_button${new_data_element_id}`);
 
