@@ -683,7 +683,7 @@ function Tournament_Organiser() {
 
     }
 
-    this.edit_coach_details = function(clicked_id) {
+    this.edit_team_details = function(clicked_id) {
 
         // get last character of button id to identify DOM elements related to it
         let id_number = clicked_id.substr(clicked_id.length - 1);
@@ -692,7 +692,7 @@ function Tournament_Organiser() {
         let coach_details_data = coach_details.data;
         let home_ground_details_data = home_ground_details.data;
 
-        edit_coach_details_display(
+        edit_team_details_display(
             id_number,
             coach_details_data,
             home_ground_details_data

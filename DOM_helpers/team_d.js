@@ -120,7 +120,7 @@ function create_team_table(
 
 }
 
-function edit_coach_details_display(
+function edit_team_details_display(
     id_number,
     coach_details_data,
     home_ground_details_data
