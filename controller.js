@@ -795,12 +795,12 @@ function Tournament_Organiser() {
         let colour_selected = document.getElementById("background_color_selector").value;
 
         if (colour_selected == "white") {
-            document.body.setAttribute("style", "background-color: rgba(255, 255, 255, 1);");
+            document.body.style.backgroundColor = "rgba(255, 255, 255, 1)";
         } else if (colour_selected == "yellow") {
-            document.body.setAttribute("style", "background-color: rgba(252, 216, 21, 1);");
+            document.body.style.backgroundColor = "rgba(252, 216, 21, 1)";
         } else {
             // no specific colour has been chosen or teal has been selected
-            document.body.setAttribute("style", "background-color: rgba(80, 221, 185, 0.3);");
+            document.body.style.backgroundColor = "rgba(80, 221, 185, 0.3)";
         }
 
     }
