@@ -488,7 +488,7 @@ function Tournament_Organiser() {
         }
     }
 
-    function  put_save_scores() {
+    function put_save_scores() {
 
         // get fixtures / results details data so that scores can be updated or saved to
         let fixtures_results_details_data = fixtures_results_details.data;
