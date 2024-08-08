@@ -264,8 +264,6 @@ function create_team_data_entry_table(coach_details_data, home_ground_details_da
     create_coach_array(coach_details_data);
     create_home_ground_array(home_ground_details_data);
 
-
-
     // populate coach select options with saved coaches
     let coach_select = document.getElementById(`coach_name${new_data_element_id}`);
     for(index in coach_array) {
