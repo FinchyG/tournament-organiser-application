@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tournament Organiser League Table Page</title>
+    <title>Tournament Organiser Fixtures / Results Details Page</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -21,18 +21,21 @@
 
         <a href="home.html"><button class="navigation_element">home</button></a>
 
-        <h1 id="page_title">League Table</h1>
+        <h1 id="page_title">Fixtures / Results</h1>
+
+        <button onclick="controller.create_fixtures()">create fixtures</button>
 
         <div id="page_content">
 
         </div>
     </div>
 
-    <script src="./DOM_helpers/l_t_d.js"></script>
-    <script src="./model/fixtures_results_details.js"></script>
-    <script src="controller.js"></script>
+    <script src="./DOM_helpers/f_r_d.js"></script>
+    <script src="../model/team_details.js"></script>
+    <script src="../model/fixtures_results_details.js"></script>
+    <script src="../controller.js"></script>
     <script>window.addEventListener("load", () => {
-        controller.create_league_table();
+        controller.populate_fixtures_results_details();
     });</script>    
 </body>
 </html>

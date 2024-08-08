@@ -802,6 +802,5 @@ function Tournament_Organiser() {
             // no specific colour has been chosen or teal has been selected
             document.body.style.backgroundColor = "rgba(80, 221, 185, 0.3)";
         }
-
     }
 }

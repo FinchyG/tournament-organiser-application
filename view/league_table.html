@@ -1,14 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tournament Organiser Login Page</title>
+    <title>Tournament Organiser League Table Page</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-
     
     <div id="page_div">
 
@@ -21,18 +19,20 @@
 
         <h1 id="web_app_title">Tournament <br> Organiser</h1>
 
-        <h1 id="page_title">LOGIN</h1>
+        <a href="home.html"><button class="navigation_element">home</button></a>
+
+        <h1 id="page_title">League Table</h1>
 
         <div id="page_content">
-            <input type="text" id="username" class="login_element" placeholder="username..." />
-            <input type="text" id="password" class="login_element" placeholder="password..." />
-            <button id="submit_login_details" class="login_element" onclick="controller.login_to_app()">
-                submit
-            </button>
+
         </div>
     </div>
 
-    <script src="./model/login_details.js"></script>
-    <script src="controller.js"></script>
+    <script src="./DOM_helpers/l_t_d.js"></script>
+    <script src="../model/fixtures_results_details.js"></script>
+    <script src="../controller.js"></script>
+    <script>window.addEventListener("load", () => {
+        controller.create_league_table();
+    });</script>    
 </body>
 </html>
