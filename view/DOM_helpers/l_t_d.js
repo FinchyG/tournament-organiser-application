@@ -109,15 +109,12 @@ function create_league_table_array(fixtures_results_details_data) {
 }
 
 function order_team_goals_and_points_array() {
-
+    // use array sort method with customised comparison
     ordered_team_goals_and_points_array = team_goals_and_points_array
         .sort(
             function(a, b) {          
-               if (a.points === b.points) {
-                  // goals difference ranks teams if points are equal
-                  return b.goals_difference - a.goals_difference;
-               }
-               return b.points > a.points ? 1 : -1;
+                return b.points - a.points || 
+                    b.goals_difference - a.goals_difference;
             }
         )
 }
