@@ -1,4 +1,4 @@
-// global variable for stroing team goals and points
+// global variable for storing team goals and points
 var team_goals_and_points_array = [];
 
 // global variable for storing league-table ordered team goals and points
