@@ -415,7 +415,7 @@ function Tournament_Organiser() {
         let fixtures_results_details_data = fixtures_results_details.data;
 
         // call function to clear display of old fixtures / results
-        clear_fxitures_results_page();
+        clear_fixtures_results_page();
 
         // check whether there are existing fixture details and 
         // confirm whether user wants to overwrite 

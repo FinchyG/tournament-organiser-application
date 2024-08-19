@@ -112,7 +112,7 @@ function shuffleTeams(teams) {
     }
 }
 
-function clear_fxitures_results_page() {
+function clear_fixtures_results_page() {
     
     // create variables to store DOM elements and reduce while loop processing
     let page_content_node = document.getElementById("page_content");
