@@ -19,7 +19,7 @@ function Tournament_Organiser() {
     function log_user_in(username, password) {
 
         // get valid login details data to check user input against
-        let login_data = user_login_details.data;
+        let login_data = login_details.data;
         // set a flag for whether user has been logged in or informed
         // of incorrect password
         let login_action_taken = false;

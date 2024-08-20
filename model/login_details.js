@@ -1,4 +1,4 @@
-const user_login_details = {
+const login_details = {
     "message": "success",
     "data" : [
         {
